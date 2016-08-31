@@ -24,7 +24,6 @@
 * JSBridge：[WebViewJavascriptBridge](https://github.com/marcuswestin/WebViewJavascriptBridge)
 
 ## 项目结构
-![项目结构](/Users/pandong/GitHub/iFans/项目目录.png)
 
 
 * 遵循 `M-V-C` 架构，分别对应 `Models` `Views` `Controllers` 三个文件夹
