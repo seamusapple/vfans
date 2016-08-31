@@ -18,4 +18,5 @@ import UIKit
 struct Color {
     //MARK: - System color
     static let white = UIColor.whiteColor()
+    static let black = UIColor.blackColor()
 }

@@ -1,5 +1,5 @@
 //
-//  RootController.swift
+//  WebViewController.swift
 //  iFans
 //
 //  Created by 潘东 on 16/8/31.
@@ -7,16 +7,17 @@
 //
 
 import UIKit
-import DLPanableWebView
 import MBProgressHUD
+import DLPanableWebView
 import WebViewJavascriptBridge
 
-class RootController: BaseController {
+class WebViewController: BaseController {
 
     //MARK:----------------------------- Life Cycle -------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setNavi()
         addPageSubviews()
         layoutPageSubviews()
         setDelegate()
@@ -26,7 +27,21 @@ class RootController: BaseController {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK:----------------------------- Init Methods -------------------------------
+    init(url: String) {
+        self.url = url
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK: --------------------------- Controller Settings ------------------------
+    func setNavi() {
+        
+    }
+    
     func addPageSubviews() {
         self.view.addSubview(webView)
         self.view.addSubview(hud)
@@ -45,8 +60,7 @@ class RootController: BaseController {
     //MARK: --------------------------- Getter and Setter --------------------------
     private lazy var webView: DLPanableWebView = {
         let webView = DLPanableWebView()
-        let url = Hybrid.baseUrl + Hybrid.shouye
-        let request = NSURLRequest(URL: NSURL(string: url)!)
+        let request = NSURLRequest(URL: NSURL(string: self.url)!)
         webView.scalesPageToFit = true
         webView.loadRequest(request)
         return webView
@@ -67,19 +81,24 @@ class RootController: BaseController {
 //            switch action {
 //            case "loadPage":
 //                if let url = data["url"].string {
-//                    let loadPageController = NewAlbumController(url: url)
+//                    let loadPageController = WebViewController(url: url)
 //                    self.navigationController?.pushViewController(loadPageController, animated: true)
 //                }
-                
+//            
+//            case "getPhoneNum":
+//                
+//                
 //            default:
 //                print("无此接口")
         }
         return jsBridge
     }()
+    
+    private var url: String = ""
 }
 
 //MARK: --------------------------- WebView Delegate --------------------------
-extension RootController: UIWebViewDelegate {
+extension WebViewController: UIWebViewDelegate {
     func webViewDidStartLoad(webView: UIWebView) {
         hud.show(true)
     }
