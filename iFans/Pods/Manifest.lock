@@ -1,0 +1,22 @@
+PODS:
+  - DLPanableWebView (0.9.1)
+  - FDFullscreenPopGesture (1.1)
+  - MBProgressHUD (0.9.2)
+  - SnapKit (0.21.1)
+  - WebViewJavascriptBridge (5.0.5)
+
+DEPENDENCIES:
+  - DLPanableWebView
+  - FDFullscreenPopGesture (~> 1.1)
+  - MBProgressHUD (~> 0.9.2)
+  - SnapKit (~> 0.21.0)
+  - WebViewJavascriptBridge (~> 5.0.5)
+
+SPEC CHECKSUMS:
+  DLPanableWebView: 955fad0362f065729cd597e898ca5cb60c8e40cb
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
+  WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
+
+COCOAPODS: 0.39.0
