@@ -15,6 +15,6 @@ import Foundation
  */
 
 struct Hybrid {
-    static let baseUrl = "http://qfdr.chunjiws.com/weixin/"
+    static let baseUrl = "http://zmcnxd.xicp.net/qfdr/weixin/"
     static let shouye = "vfans_list"
 }

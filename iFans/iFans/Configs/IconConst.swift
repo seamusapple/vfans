@@ -15,7 +15,8 @@ import Foundation
  */
 
 struct Icon {
-    
+    //MARK: - For Navi
+    static let back = "title_back"
 }
 
 struct Image {

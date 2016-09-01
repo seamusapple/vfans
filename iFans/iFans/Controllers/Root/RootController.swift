@@ -10,6 +10,7 @@ import UIKit
 import DLPanableWebView
 import MBProgressHUD
 import WebViewJavascriptBridge
+import SwiftyJSON
 
 class RootController: BaseController {
 
@@ -61,18 +62,25 @@ class RootController: BaseController {
     private lazy var jsBridge: WebViewJavascriptBridge = {
         let jsBridge = WebViewJavascriptBridge(forWebView: self.webView)
         jsBridge.registerHandler("AppNativeHandler") { [weak self] (data, responseCallback) in
-//            let json = JSON(data)
-//            let action = json["action"].stringValue
-//            let data = json["data"]
-//            switch action {
-//            case "loadPage":
-//                if let url = data["url"].string {
-//                    let loadPageController = NewAlbumController(url: url)
-//                    self.navigationController?.pushViewController(loadPageController, animated: true)
-//                }
+            let json = JSON(data)
+            print(json)
+            let action = json["action"].stringValue
+            let data = json["data"]
+            switch action {
+            case "loadPage":
+                if let url = data["url"].string {
+                    let loadPageController = WebViewController(url: url)
+                    self!.navigationController?.pushViewController(loadPageController, animated: true)
+                }
                 
-//            default:
-//                print("无此接口")
+            case "getPhoneNum":
+                if let phoneList = data["phoneList"].array {
+                    print(phoneList)
+                }
+                
+            default:
+                print("无此接口")
+            }
         }
         return jsBridge
     }()

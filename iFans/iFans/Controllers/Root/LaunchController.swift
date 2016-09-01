@@ -14,9 +14,13 @@ class LaunchController: UIViewController {
     //MARK:----------------------------- Life Cycle -------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.redColor()
         addPageSubviews()
         layoutPageSubviews()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        sleep(3)
         loadNextPage()
     }
 
@@ -39,6 +43,7 @@ class LaunchController: UIViewController {
     private var launchImage: UIImageView = {
         let launchImage = UIImageView()
         launchImage.image = UIImage(named: Image.launch)
+        launchImage.backgroundColor = UIColor.blackColor()
         return launchImage
     }()
     

@@ -86,14 +86,18 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/DLPanableWebView.framework"
   install_framework "Pods/FDFullscreenPopGesture.framework"
+  install_framework "Pods/JLToast.framework"
   install_framework "Pods/MBProgressHUD.framework"
   install_framework "Pods/SnapKit.framework"
+  install_framework "Pods/SwiftyJSON.framework"
   install_framework "Pods/WebViewJavascriptBridge.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/DLPanableWebView.framework"
   install_framework "Pods/FDFullscreenPopGesture.framework"
+  install_framework "Pods/JLToast.framework"
   install_framework "Pods/MBProgressHUD.framework"
   install_framework "Pods/SnapKit.framework"
+  install_framework "Pods/SwiftyJSON.framework"
   install_framework "Pods/WebViewJavascriptBridge.framework"
 fi

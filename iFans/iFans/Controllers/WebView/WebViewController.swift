@@ -10,6 +10,7 @@ import UIKit
 import MBProgressHUD
 import DLPanableWebView
 import WebViewJavascriptBridge
+import SwiftyJSON
 
 class WebViewController: BaseController {
 
@@ -39,7 +40,7 @@ class WebViewController: BaseController {
     
     //MARK: --------------------------- Controller Settings ------------------------
     func setNavi() {
-        
+        setNaviBarBtnItemWithImage(UIImage(named: Icon.back)!, direction: true, style: .Plain, action: #selector(backToUpLevel), hidden: false)
     }
     
     func addPageSubviews() {
@@ -55,6 +56,15 @@ class WebViewController: BaseController {
     
     func setDelegate() {
         webView.delegate = self
+    }
+    
+    //MARK: --------------------------- Event Response ------------------------
+    func backToUpLevel() {
+        if webView.canGoBack {
+            webView.goBack()
+        } else {
+            navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     //MARK: --------------------------- Getter and Setter --------------------------
@@ -75,21 +85,25 @@ class WebViewController: BaseController {
     private lazy var jsBridge: WebViewJavascriptBridge = {
         let jsBridge = WebViewJavascriptBridge(forWebView: self.webView)
         jsBridge.registerHandler("AppNativeHandler") { [weak self] (data, responseCallback) in
-//            let json = JSON(data)
-//            let action = json["action"].stringValue
-//            let data = json["data"]
-//            switch action {
-//            case "loadPage":
-//                if let url = data["url"].string {
-//                    let loadPageController = WebViewController(url: url)
-//                    self.navigationController?.pushViewController(loadPageController, animated: true)
-//                }
-//            
-//            case "getPhoneNum":
-//                
-//                
-//            default:
-//                print("无此接口")
+            let json = JSON(data)
+            let action = json["action"].stringValue
+            let data = json["data"]
+            switch action {
+            case "loadPage":
+                if let url = data["url"].string {
+                    let loadPageController = WebViewController(url: url)
+                    self!.navigationController?.pushViewController(loadPageController, animated: true)
+                }
+
+            case "getPhoneNum":
+                if let phoneList = data["phoneList"].array {
+
+                }
+                
+
+            default:
+                print("无此接口")
+            }
         }
         return jsBridge
     }()
