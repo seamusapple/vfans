@@ -16,23 +16,30 @@ class ContactsStore {
     private let kName = "userName"
     private let kPhone = "phoneNum"
 
-    //MARK: - life cycle
+    //MARK: ------------------ life cycle --------------------
     static let sharedStore = ContactsStore()
     
-    private var phoneDatas: [JSON]?
+    private var phoneDatasToSave: [JSON]?
+    
+    private var phoneDatasToDel: [JSON]?
     
     private var addressBook = SwiftAddressBook()
     
     private var saveResult: CFError?
     
+    private var delResult: CFError?
+    
     private init() {
-        phoneDatas = nil
+        phoneDatasToSave = nil
+        phoneDatasToDel = nil
         saveResult = nil
+        delResult = nil
     }
     
-    //MARK: - public method
-    func setPhoneData(data: [JSON], withCallback callback: ()->()) {
-        self.phoneDatas = data
+    //MARK: ------------------ public method --------------------
+    //MARK: - 保存联系人
+    func savePhoneData(data: [JSON], withCallback callback: ()->()) {
+        self.phoneDatasToSave = data
         
         switch isAuth() {
             
@@ -52,11 +59,38 @@ class ContactsStore {
         }
     }
     
-    func isSuccess() -> Bool {
+    func isSaveSuccess() -> Bool {
         return saveResult == nil ? true : false
     }
     
-    //MARK: - private method
+    //MARK: - 删除联系人
+    func delPhoneData(data: [JSON], withCallback callback: ()->()) {
+        self.phoneDatasToDel = data
+        
+        switch isAuth() {
+            
+        case .Authorized:
+            delFromAddressBook()
+            callback()
+            
+        case .NotDetermined:
+            requestAuth()
+            
+        case .Denied:
+            print("没有权限")
+            requestAuth()
+            
+        case .Restricted:
+            print("不晓得嘛")
+        }
+    }
+    
+    func isDelSuccess() -> Bool {
+        return delResult == nil ? true : false
+    }
+    
+    //MARK: ------------------ private method --------------------
+    //MARK: - 请求权限
     private func requestAuth() {
         SwiftAddressBook.requestAccessWithCompletion { (success, error) in
             if success {
@@ -71,14 +105,15 @@ class ContactsStore {
         return SwiftAddressBook.authorizationStatus()
     }
     
+    //MARK: - 保存联系人
     private func saveToAddressBook() {
 
-        guard let phoneDatas = phoneDatas else {
+        guard let phoneDatas = phoneDatasToSave else {
             print("无电话信息")
             return
         }
         
-        //MARK: - 存储群组
+        // - 存储群组
         var group: SwiftAddressBookGroup?
         var groupNameArray = [String]()
         if let existGroups = addressBook?.arrayOfAllGroups {
@@ -97,7 +132,7 @@ class ContactsStore {
             }
         }
         
-        //MARK: - 存储联系人
+        // - 存储联系人
         if let people = addressBook?.allPeople {
             var nameArray = [String]()
             for existPeron in people {
@@ -121,7 +156,30 @@ class ContactsStore {
                 }
             }
         }
-        
         saveResult = addressBook?.save()
+    }
+    
+    //MARK: - 删除联系人
+    private func delFromAddressBook() {
+        guard let phoneDatas = phoneDatasToDel else {
+            print("无电话信息")
+            return
+        }
+        
+        if let people = addressBook?.allPeople {
+            for phoneData in phoneDatas {
+                for existPerson in people {
+                    if let phoneNumbers = existPerson.phoneNumbers {
+                        for number in phoneNumbers {
+                            if phoneData[kPhone].stringValue == number.value {
+                                addressBook?.removeRecord(existPerson)
+                                addressBook?.save()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        delResult = addressBook?.save()
     }
 }

@@ -69,17 +69,31 @@ class WebViewController: BaseController {
                     self!.navigationController?.pushViewController(loadPageController, animated: true)
                 }
                 
-            case "getPhoneNum":
+            case "savePhoneNum":
                 if let phoneList = data["phoneList"].array {
-                    ContactsStore.sharedStore.setPhoneData(phoneList, withCallback: { 
-                        if ContactsStore.sharedStore.isSuccess() {
-                            JLToastView.setDefaultValue(Size.screenHeight / 2, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: UIUserInterfaceIdiom.Phone)
-                            let toast = JLToast.makeText("保存成功", delay: 0, duration: 1.0)
-                            toast.show()
-                        } else {
-                            let toast = JLToast.makeText("保存失败", delay: 0, duration: 1.0)
-                            toast.show()
-                        }
+                    let hud = MBProgressHUD.showHUDAddedTo(self!.view, animated: true)
+                    hud.mode = .AnnularDeterminate
+                    hud.labelText = "正在保存..."
+                    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { 
+                        self?.saveToAddressBook(phoneList)
+                            dispatch_async(dispatch_get_main_queue(), {
+                            hud.hide(true)
+                            hud.removeFromSuperViewOnHide = true
+                        })
+                    })
+                }
+                
+            case "delPhoneNum":
+                if let phoneList = data["phoneList"].array {
+                    let hud = MBProgressHUD.showHUDAddedTo(self!.view, animated: true)
+                    hud.mode = .AnnularDeterminate
+                    hud.labelText = "正在删除..."
+                    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
+                        self?.delFromAddressBook(phoneList)
+                        dispatch_async(dispatch_get_main_queue(), {
+                            hud.hide(true)
+                            hud.removeFromSuperViewOnHide = true
+                        })
                     })
                 }
                 
@@ -96,6 +110,32 @@ class WebViewController: BaseController {
         } else {
             navigationController?.popViewControllerAnimated(true)
         }
+    }
+    
+    func saveToAddressBook(data: [JSON]) {
+        ContactsStore.sharedStore.savePhoneData(data, withCallback: {
+            if ContactsStore.sharedStore.isSaveSuccess() {
+                JLToastView.setDefaultValue(Size.screenHeight / 2, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: UIUserInterfaceIdiom.Phone)
+                let toast = JLToast.makeText("保存成功", delay: 0, duration: 1.0)
+                toast.show()
+            } else {
+                let toast = JLToast.makeText("保存失败", delay: 0, duration: 1.0)
+                toast.show()
+            }
+        })
+    }
+    
+    func delFromAddressBook(data: [JSON]) {
+        ContactsStore.sharedStore.delPhoneData(data, withCallback: {
+            if ContactsStore.sharedStore.isDelSuccess() {
+                JLToastView.setDefaultValue(Size.screenHeight / 2, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: UIUserInterfaceIdiom.Phone)
+                let toast = JLToast.makeText("删除成功", delay: 0, duration: 1.0)
+                toast.show()
+            } else {
+                let toast = JLToast.makeText("删除失败", delay: 0, duration: 1.0)
+                toast.show()
+            }
+        })
     }
     
     //MARK: --------------------------- Getter and Setter --------------------------
