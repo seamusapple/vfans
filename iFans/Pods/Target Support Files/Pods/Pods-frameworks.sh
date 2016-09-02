@@ -89,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/JLToast.framework"
   install_framework "Pods/MBProgressHUD.framework"
   install_framework "Pods/SnapKit.framework"
+  install_framework "Pods/SwiftAddressBook.framework"
   install_framework "Pods/SwiftyJSON.framework"
   install_framework "Pods/WebViewJavascriptBridge.framework"
 fi
@@ -98,6 +99,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/JLToast.framework"
   install_framework "Pods/MBProgressHUD.framework"
   install_framework "Pods/SnapKit.framework"
+  install_framework "Pods/SwiftAddressBook.framework"
   install_framework "Pods/SwiftyJSON.framework"
   install_framework "Pods/WebViewJavascriptBridge.framework"
 fi

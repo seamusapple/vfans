@@ -19,4 +19,7 @@ struct Color {
     //MARK: - System color
     static let white = UIColor.whiteColor()
     static let black = UIColor.blackColor()
+    
+    //MARK: - Navi color
+    static let naviColor = UIColor(red: 61 / 255, green: 64 / 255, blue: 69 / 255, alpha: 1.0)
 }

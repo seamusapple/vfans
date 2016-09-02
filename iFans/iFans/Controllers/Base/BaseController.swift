@@ -20,7 +20,7 @@ class BaseController: UIViewController, UIGestureRecognizerDelegate {
     private func setBaseConditions() {
         view.backgroundColor = Color.white
         
-        navigationController?.navigationBar.translucent = false // 关闭导航栏半透明效果
+        navigationController?.navigationBar.translucent = true // 关闭导航栏半透明效果
         
         edgesForExtendedLayout = UIRectEdge.None
     }

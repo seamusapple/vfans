@@ -8,9 +8,9 @@
 
 import UIKit
 import MBProgressHUD
-import DLPanableWebView
 import WebViewJavascriptBridge
 import SwiftyJSON
+import JLToast
 
 class WebViewController: BaseController {
 
@@ -21,7 +21,7 @@ class WebViewController: BaseController {
         setNavi()
         addPageSubviews()
         layoutPageSubviews()
-        setDelegate()
+        setJSBridge()
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,6 +41,7 @@ class WebViewController: BaseController {
     //MARK: --------------------------- Controller Settings ------------------------
     func setNavi() {
         setNaviBarBtnItemWithImage(UIImage(named: Icon.back)!, direction: true, style: .Plain, action: #selector(backToUpLevel), hidden: false)
+        setNaviBarBackgroundColor(Color.naviColor)
     }
     
     func addPageSubviews() {
@@ -54,8 +55,36 @@ class WebViewController: BaseController {
         }
     }
     
-    func setDelegate() {
-        webView.delegate = self
+    func setJSBridge() {
+        jsBridge = WebViewJavascriptBridge(forWebView: webView)
+        jsBridge?.setWebViewDelegate(self)
+        jsBridge?.registerHandler("AppNativeHandler") { [weak self] (data, responseCallback) in
+            let json = JSON(data)
+            let action = json["action"].stringValue
+            let data = json["data"]
+            switch action {
+            case "loadPage":
+                if let url = data["url"].string {
+                    let loadPageController = WebViewController(url: url)
+                    self!.navigationController?.pushViewController(loadPageController, animated: true)
+                }
+                
+            case "getPhoneNum":
+                if let phoneList = data["phoneList"].array {
+                    ContactsStore.sharedStore.setPhoneData(phoneList)
+                    if ContactsStore.sharedStore.isSuccess() {
+                        let toast = JLToast.makeText("保存成功", delay: 0, duration: 1.0)
+                        toast.show()
+                    } else {
+                        let toast = JLToast.makeText("保存失败", delay: 0, duration: 1.0)
+                        toast.show()
+                    }
+                }
+                
+            default:
+                print("无此接口")
+            }
+        }
     }
     
     //MARK: --------------------------- Event Response ------------------------
@@ -68,8 +97,8 @@ class WebViewController: BaseController {
     }
     
     //MARK: --------------------------- Getter and Setter --------------------------
-    private lazy var webView: DLPanableWebView = {
-        let webView = DLPanableWebView()
+    private lazy var webView: UIWebView = {
+        let webView = UIWebView()
         let request = NSURLRequest(URL: NSURL(string: self.url)!)
         webView.scalesPageToFit = true
         webView.loadRequest(request)
@@ -82,31 +111,7 @@ class WebViewController: BaseController {
         return hud
     }()
     
-    private lazy var jsBridge: WebViewJavascriptBridge = {
-        let jsBridge = WebViewJavascriptBridge(forWebView: self.webView)
-        jsBridge.registerHandler("AppNativeHandler") { [weak self] (data, responseCallback) in
-            let json = JSON(data)
-            let action = json["action"].stringValue
-            let data = json["data"]
-            switch action {
-            case "loadPage":
-                if let url = data["url"].string {
-                    let loadPageController = WebViewController(url: url)
-                    self!.navigationController?.pushViewController(loadPageController, animated: true)
-                }
-
-            case "getPhoneNum":
-                if let phoneList = data["phoneList"].array {
-
-                }
-                
-
-            default:
-                print("无此接口")
-            }
-        }
-        return jsBridge
-    }()
+    private var jsBridge: WebViewJavascriptBridge?
     
     private var url: String = ""
 }
@@ -119,7 +124,7 @@ extension WebViewController: UIWebViewDelegate {
     
     func webViewDidFinishLoad(webView: UIWebView) {
         let title = webView.stringByEvaluatingJavaScriptFromString("document.title")
-        setNaviBarTitle(title!, font: Font.naviTitle, textColor: Color.black)
+        setNaviBarTitle(title!, font: Font.naviTitle, textColor: Color.white)
         hud.hide(true)
         hud.removeFromSuperViewOnHide = true
     }

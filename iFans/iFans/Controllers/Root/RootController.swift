@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DLPanableWebView
 import MBProgressHUD
 import WebViewJavascriptBridge
 import SwiftyJSON
@@ -18,9 +17,10 @@ class RootController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setNavi()
         addPageSubviews()
         layoutPageSubviews()
-        setDelegate()
+        setJSBridge()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +28,10 @@ class RootController: BaseController {
     }
     
     //MARK: --------------------------- Controller Settings ------------------------
+    func setNavi() {
+        setNaviBarBackgroundColor(Color.naviColor)
+    }
+    
     func addPageSubviews() {
         self.view.addSubview(webView)
         self.view.addSubview(hud)
@@ -39,31 +43,11 @@ class RootController: BaseController {
         }
     }
     
-    func setDelegate() {
-        webView.delegate = self
-    }
-    
-    //MARK: --------------------------- Getter and Setter --------------------------
-    private lazy var webView: DLPanableWebView = {
-        let webView = DLPanableWebView()
-        let url = Hybrid.baseUrl + Hybrid.shouye
-        let request = NSURLRequest(URL: NSURL(string: url)!)
-        webView.scalesPageToFit = true
-        webView.loadRequest(request)
-        return webView
-    }()
-    
-    private lazy var hud: MBProgressHUD = {
-        let hud = MBProgressHUD()
-        hud.mode = .Indeterminate
-        return hud
-    }()
-    
-    private lazy var jsBridge: WebViewJavascriptBridge = {
-        let jsBridge = WebViewJavascriptBridge(forWebView: self.webView)
-        jsBridge.registerHandler("AppNativeHandler") { [weak self] (data, responseCallback) in
+    func setJSBridge() {
+        jsBridge = WebViewJavascriptBridge(forWebView: webView)
+        jsBridge?.setWebViewDelegate(self)
+        jsBridge!.registerHandler("AppNativeHandler") { [weak self] (data, responseCallback) in
             let json = JSON(data)
-            print(json)
             let action = json["action"].stringValue
             let data = json["data"]
             switch action {
@@ -76,14 +60,32 @@ class RootController: BaseController {
             case "getPhoneNum":
                 if let phoneList = data["phoneList"].array {
                     print(phoneList)
+                    ContactsStore.sharedStore.setPhoneData(phoneList)
                 }
                 
             default:
                 print("无此接口")
             }
         }
-        return jsBridge
+    }
+    
+    //MARK: --------------------------- Getter and Setter --------------------------
+    private var webView: UIWebView = {
+        let webView = UIWebView()
+        let url = Hybrid.baseUrl + Hybrid.shouye
+        let request = NSURLRequest(URL: NSURL(string: url)!)
+        webView.scalesPageToFit = true
+        webView.loadRequest(request)
+        return webView
     }()
+    
+    private var hud: MBProgressHUD = {
+        let hud = MBProgressHUD()
+        hud.mode = .Indeterminate
+        return hud
+    }()
+
+    private var jsBridge: WebViewJavascriptBridge?
 }
 
 //MARK: --------------------------- WebView Delegate --------------------------
@@ -94,7 +96,7 @@ extension RootController: UIWebViewDelegate {
     
     func webViewDidFinishLoad(webView: UIWebView) {
         let title = webView.stringByEvaluatingJavaScriptFromString("document.title")
-        setNaviBarTitle(title!, font: Font.naviTitle, textColor: Color.black)
+        setNaviBarTitle(title!, font: Font.naviTitle, textColor: Color.white)
         hud.hide(true)
         hud.removeFromSuperViewOnHide = true
     }
