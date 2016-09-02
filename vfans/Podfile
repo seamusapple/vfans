@@ -1,0 +1,11 @@
+platform :ios, ‘8.0’
+use_frameworks!
+
+pod 'SnapKit', '~> 0.21.0'
+pod 'WebViewJavascriptBridge', '~> 5.0.5'
+pod 'MBProgressHUD', '~> 0.9.2'
+pod 'FDFullscreenPopGesture', '~> 1.1'
+pod 'DLPanableWebView'
+pod 'SwiftyJSON', '~> 2.3.1'
+pod 'JLToast', '~> 1.4'
+pod 'SwiftAddressBook'

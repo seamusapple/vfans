@@ -1,0 +1,6 @@
+framework module DLPanableWebView {
+  umbrella header "DLPanableWebView-umbrella.h"
+
+  export *
+  module * { export * }
+}
