@@ -1,4 +1,4 @@
-# iFans
+# vfans
 
 ## 项目中使用的第三方库
 ### 管理工具
@@ -17,6 +17,7 @@
 * 下拉／上拉刷新：[MJRefresh](https://github.com/CoderMJLee/MJRefresh)
 * 菊花加载：[MBProgressHUD](https://github.com/jdg/MBProgressHUD)
 * 图片异步加载：[Kingfisher](https://github.com/onevcat/Kingfisher)
+* 消息提示：[JLToast](https://github.com/devxoul/JLToast)
 
 
 ### Hybrid相关

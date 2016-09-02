@@ -1,1 +1,0 @@
-../../../SwiftAddressBook/Pod/Classes/SwiftAddressBookObserver.h
