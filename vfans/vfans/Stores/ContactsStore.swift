@@ -23,11 +23,7 @@ class ContactsStore {
     
     private var addressBook = SwiftAddressBook()
     
-    private var saveResult: CFError? {
-        didSet {
-            
-        }
-    }
+    private var saveResult: CFError?
     
     private init() {
         phoneDatas = nil
@@ -35,13 +31,14 @@ class ContactsStore {
     }
     
     //MARK: - public method
-    func setPhoneData(data: [JSON]) {
+    func setPhoneData(data: [JSON], withCallback callback: ()->()) {
         self.phoneDatas = data
         
         switch isAuth() {
             
         case .Authorized:
             saveToAddressBook()
+            callback()
             
         case .NotDetermined:
             requestAuth()

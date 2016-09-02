@@ -71,14 +71,16 @@ class WebViewController: BaseController {
                 
             case "getPhoneNum":
                 if let phoneList = data["phoneList"].array {
-                    ContactsStore.sharedStore.setPhoneData(phoneList)
-                    if ContactsStore.sharedStore.isSuccess() {
-                        let toast = JLToast.makeText("保存成功", delay: 0, duration: 1.0)
-                        toast.show()
-                    } else {
-                        let toast = JLToast.makeText("保存失败", delay: 0, duration: 1.0)
-                        toast.show()
-                    }
+                    ContactsStore.sharedStore.setPhoneData(phoneList, withCallback: { 
+                        if ContactsStore.sharedStore.isSuccess() {
+                            JLToastView.setDefaultValue(Size.screenHeight / 2, forAttributeName: JLToastViewPortraitOffsetYAttributeName, userInterfaceIdiom: UIUserInterfaceIdiom.Phone)
+                            let toast = JLToast.makeText("保存成功", delay: 0, duration: 1.0)
+                            toast.show()
+                        } else {
+                            let toast = JLToast.makeText("保存失败", delay: 0, duration: 1.0)
+                            toast.show()
+                        }
+                    })
                 }
                 
             default:

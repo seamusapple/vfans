@@ -57,12 +57,6 @@ class RootController: BaseController {
                     self!.navigationController?.pushViewController(loadPageController, animated: true)
                 }
                 
-            case "getPhoneNum":
-                if let phoneList = data["phoneList"].array {
-                    print(phoneList)
-                    ContactsStore.sharedStore.setPhoneData(phoneList)
-                }
-                
             default:
                 print("无此接口")
             }

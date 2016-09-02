@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A39D716DB0E35ABD5F05F43 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C2861F64A556F1932219BE /* Pods.framework */; };
 		C15A4B7F1D766CCF00FE0D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15A4B7E1D766CCF00FE0D44 /* AppDelegate.swift */; };
-		C15A4B841D766CCF00FE0D44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C15A4B821D766CCF00FE0D44 /* Main.storyboard */; };
 		C15A4B891D766CCF00FE0D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C15A4B871D766CCF00FE0D44 /* LaunchScreen.storyboard */; };
 		C15A4BA11D76B4B300FE0D44 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15A4BA01D76B4B300FE0D44 /* LaunchController.swift */; };
 		C15A4BA31D76B69F00FE0D44 /* IconConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15A4BA21D76B69F00FE0D44 /* IconConst.swift */; };
@@ -19,6 +18,7 @@
 		C15A4BAE1D76CE6900FE0D44 /* ColorConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15A4BAD1D76CE6900FE0D44 /* ColorConst.swift */; };
 		C18DB0651D77C39F000F9DCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C18DB0641D77C39F000F9DCA /* Assets.xcassets */; };
 		C18DB0671D77DD97000F9DCA /* ContactsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18DB0661D77DD97000F9DCA /* ContactsStore.swift */; };
+		C196CFD41D79978600016F99 /* SizeConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C196CFD31D79978600016F99 /* SizeConst.swift */; };
 		C1F3B6E31D771A1400D4DDDE /* FontConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F3B6E21D771A1400D4DDDE /* FontConst.swift */; };
 		C1F3B6E61D771BDF00D4DDDE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F3B6E51D771BDF00D4DDDE /* WebViewController.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +29,6 @@
 		B3619B6A0F8B63B17BD1DC26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C15A4B7B1D766CCF00FE0D44 /* vfans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vfans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15A4B7E1D766CCF00FE0D44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C15A4B831D766CCF00FE0D44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C15A4B881D766CCF00FE0D44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C15A4B9D1D76749100FE0D44 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C15A4BA01D76B4B300FE0D44 /* LaunchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchController.swift; sourceTree = "<group>"; };
@@ -40,6 +39,7 @@
 		C15A4BAD1D76CE6900FE0D44 /* ColorConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConst.swift; sourceTree = "<group>"; };
 		C18DB0641D77C39F000F9DCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C18DB0661D77DD97000F9DCA /* ContactsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsStore.swift; sourceTree = "<group>"; };
+		C196CFD31D79978600016F99 /* SizeConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeConst.swift; sourceTree = "<group>"; };
 		C1F3B6E21D771A1400D4DDDE /* FontConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontConst.swift; sourceTree = "<group>"; };
 		C1F3B6E51D771BDF00D4DDDE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +164,7 @@
 				C15A4BA61D76C81400FE0D44 /* HybridConst.swift */,
 				C15A4BAD1D76CE6900FE0D44 /* ColorConst.swift */,
 				C1F3B6E21D771A1400D4DDDE /* FontConst.swift */,
+				C196CFD31D79978600016F99 /* SizeConst.swift */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -186,7 +187,6 @@
 		C15A4B9A1D76725200FE0D44 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				C15A4B821D766CCF00FE0D44 /* Main.storyboard */,
 				C15A4B871D766CCF00FE0D44 /* LaunchScreen.storyboard */,
 			);
 			path = Base.lproj;
@@ -281,7 +281,6 @@
 			files = (
 				C15A4B891D766CCF00FE0D44 /* LaunchScreen.storyboard in Resources */,
 				C18DB0651D77C39F000F9DCA /* Assets.xcassets in Resources */,
-				C15A4B841D766CCF00FE0D44 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +343,7 @@
 				C1F3B6E61D771BDF00D4DDDE /* WebViewController.swift in Sources */,
 				C18DB0671D77DD97000F9DCA /* ContactsStore.swift in Sources */,
 				C15A4BAA1D76CDF600FE0D44 /* RootController.swift in Sources */,
+				C196CFD41D79978600016F99 /* SizeConst.swift in Sources */,
 				C15A4BA11D76B4B300FE0D44 /* LaunchController.swift in Sources */,
 				C15A4BA31D76B69F00FE0D44 /* IconConst.swift in Sources */,
 				C15A4B7F1D766CCF00FE0D44 /* AppDelegate.swift in Sources */,
@@ -356,15 +356,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C15A4B821D766CCF00FE0D44 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C15A4B831D766CCF00FE0D44 /* Base */,
-			);
-			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		C15A4B871D766CCF00FE0D44 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -395,8 +386,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -442,8 +433,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -469,8 +460,8 @@
 			baseConfigurationReference = B3619B6A0F8B63B17BD1DC26 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/vfans/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -486,8 +477,8 @@
 			baseConfigurationReference = 51C0E793CF0EC9276F4B8AC5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/vfans/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
