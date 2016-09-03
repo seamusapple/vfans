@@ -73,12 +73,11 @@ class WebViewController: BaseController {
                 if let phoneList = data["phoneList"].array {
                     let hud = MBProgressHUD.showHUDAddedTo(self!.view, animated: true)
                     hud.mode = .AnnularDeterminate
-                    hud.labelText = "正在保存..."
+                    hud.label.text = "正在保存..."
                     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { 
                         self?.saveToAddressBook(phoneList)
                             dispatch_async(dispatch_get_main_queue(), {
-                            hud.hide(true)
-                            hud.removeFromSuperViewOnHide = true
+                            hud.hideAnimated(true)
                         })
                     })
                 }
@@ -87,12 +86,11 @@ class WebViewController: BaseController {
                 if let phoneList = data["phoneList"].array {
                     let hud = MBProgressHUD.showHUDAddedTo(self!.view, animated: true)
                     hud.mode = .AnnularDeterminate
-                    hud.labelText = "正在删除..."
+                    hud.label.text = "正在删除..."
                     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
                         self?.delFromAddressBook(phoneList)
                         dispatch_async(dispatch_get_main_queue(), {
-                            hud.hide(true)
-                            hud.removeFromSuperViewOnHide = true
+                            hud.hideAnimated(true)
                         })
                     })
                 }
@@ -148,7 +146,7 @@ class WebViewController: BaseController {
     }()
     
     private lazy var hud: MBProgressHUD = {
-        let hud = MBProgressHUD()
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.mode = .Indeterminate
         return hud
     }()
@@ -161,13 +159,14 @@ class WebViewController: BaseController {
 //MARK: --------------------------- WebView Delegate --------------------------
 extension WebViewController: UIWebViewDelegate {
     func webViewDidStartLoad(webView: UIWebView) {
-        hud.show(true)
+        hud.showAnimated(true)
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
+        let isIOS = true
+        webView.stringByEvaluatingJavaScriptFromString("isIOS(\(isIOS))")
         let title = webView.stringByEvaluatingJavaScriptFromString("document.title")
         setNaviBarTitle(title!, font: Font.naviTitle, textColor: Color.white)
-        hud.hide(true)
-        hud.removeFromSuperViewOnHide = true
+        hud.hideAnimated(true)
     }
 }

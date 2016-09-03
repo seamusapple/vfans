@@ -2,7 +2,7 @@ PODS:
   - DLPanableWebView (0.9.1)
   - FDFullscreenPopGesture (1.1)
   - JLToast (1.4.2)
-  - MBProgressHUD (0.9.2)
+  - MBProgressHUD (1.0.0)
   - SnapKit (0.21.1)
   - SwiftAddressBook (0.6.2)
   - SwiftyJSON (2.3.2)
@@ -12,7 +12,7 @@ DEPENDENCIES:
   - DLPanableWebView
   - FDFullscreenPopGesture (~> 1.1)
   - JLToast (~> 1.4)
-  - MBProgressHUD (~> 0.9.2)
+  - MBProgressHUD (~> 1.0.0)
   - SnapKit (~> 0.21.0)
   - SwiftAddressBook
   - SwiftyJSON (~> 2.3.1)
@@ -22,7 +22,7 @@ SPEC CHECKSUMS:
   DLPanableWebView: 955fad0362f065729cd597e898ca5cb60c8e40cb
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   JLToast: bf63282a7df069557e80c77dbd2c6b9f9fc4de72
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   SwiftAddressBook: 88c68c6bd0c6a9cb10e5cdc80f91fd87b5e0f4ec
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a

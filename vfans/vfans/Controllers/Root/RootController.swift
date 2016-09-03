@@ -73,8 +73,8 @@ class RootController: BaseController {
         return webView
     }()
     
-    private var hud: MBProgressHUD = {
-        let hud = MBProgressHUD()
+    private lazy var hud: MBProgressHUD = {
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.mode = .Indeterminate
         return hud
     }()
@@ -85,13 +85,14 @@ class RootController: BaseController {
 //MARK: --------------------------- WebView Delegate --------------------------
 extension RootController: UIWebViewDelegate {
     func webViewDidStartLoad(webView: UIWebView) {
-        hud.show(true)
+        hud.showAnimated(true)
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
+        let isIOS = true
+        webView.stringByEvaluatingJavaScriptFromString("isIOS(\(isIOS))")
         let title = webView.stringByEvaluatingJavaScriptFromString("document.title")
         setNaviBarTitle(title!, font: Font.naviTitle, textColor: Color.white)
-        hud.hide(true)
-        hud.removeFromSuperViewOnHide = true
+        hud.hideAnimated(true)
     }
 }
