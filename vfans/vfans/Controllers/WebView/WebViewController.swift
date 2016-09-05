@@ -136,6 +136,11 @@ class WebViewController: BaseController {
         })
     }
     
+    func howToUse() {
+        let loadPageController = WebViewController(url: Hybrid.baseUrl + Hybrid.howToUse)
+        self.navigationController?.pushViewController(loadPageController, animated: true)
+    }
+    
     //MARK: --------------------------- Getter and Setter --------------------------
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
@@ -167,6 +172,9 @@ extension WebViewController: UIWebViewDelegate {
         webView.stringByEvaluatingJavaScriptFromString("isIOS(\(isIOS))")
         let title = webView.stringByEvaluatingJavaScriptFromString("document.title")
         setNaviBarTitle(title!, font: Font.naviTitle, textColor: Color.white)
+        if title == "互粉神器" {
+            setNaviBarBtnItemWithTitle("如何使用？", textColor: Color.white, direction: false, style: UIBarButtonItemStyle.Plain, action: #selector(WebViewController.howToUse))
+        }
         hud.hideAnimated(true)
     }
 }

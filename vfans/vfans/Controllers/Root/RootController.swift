@@ -66,7 +66,7 @@ class RootController: BaseController {
     //MARK: --------------------------- Getter and Setter --------------------------
     private var webView: UIWebView = {
         let webView = UIWebView()
-        let url = Hybrid.baseUrl + Hybrid.shouye
+        let url = Hybrid.baseUrl + Hybrid.home
         let request = NSURLRequest(URL: NSURL(string: url)!)
         webView.scalesPageToFit = true
         webView.loadRequest(request)
