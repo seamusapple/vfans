@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = launchController
         self.window?.makeKeyAndVisible()
         
+        // 微信支付
+        let WX_APPID = "wx7f8453b748d128d8"
+        WXApi.registerApp(WX_APPID, withDescription: "vfans")
+        
         return true
     }
 

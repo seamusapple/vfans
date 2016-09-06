@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A39D716DB0E35ABD5F05F43 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C2861F64A556F1932219BE /* Pods.framework */; };
+		C145415A1D7D80A800413C74 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C14541561D7D80A800413C74 /* libWeChatSDK.a */; };
 		C15A4B7F1D766CCF00FE0D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15A4B7E1D766CCF00FE0D44 /* AppDelegate.swift */; };
 		C15A4B891D766CCF00FE0D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C15A4B871D766CCF00FE0D44 /* LaunchScreen.storyboard */; };
 		C15A4BA11D76B4B300FE0D44 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15A4BA01D76B4B300FE0D44 /* LaunchController.swift */; };
@@ -27,6 +28,11 @@
 		51C0E793CF0EC9276F4B8AC5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		67C2861F64A556F1932219BE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3619B6A0F8B63B17BD1DC26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C14541561D7D80A800413C74 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		C14541571D7D80A800413C74 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		C14541581D7D80A800413C74 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		C14541591D7D80A800413C74 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		C145415B1D7D80C600413C74 /* vfans-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vfans-Bridging-Header.h"; sourceTree = "<group>"; };
 		C15A4B7B1D766CCF00FE0D44 /* vfans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vfans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15A4B7E1D766CCF00FE0D44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C15A4B881D766CCF00FE0D44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C145415A1D7D80A800413C74 /* libWeChatSDK.a in Frameworks */,
 				0A39D716DB0E35ABD5F05F43 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +78,17 @@
 				67C2861F64A556F1932219BE /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C14541551D7D807B00413C74 /* WeiXinSDK */ = {
+			isa = PBXGroup;
+			children = (
+				C14541561D7D80A800413C74 /* libWeChatSDK.a */,
+				C14541571D7D80A800413C74 /* WechatAuthSDK.h */,
+				C14541581D7D80A800413C74 /* WXApi.h */,
+				C14541591D7D80A800413C74 /* WXApiObject.h */,
+			);
+			path = WeiXinSDK;
 			sourceTree = "<group>";
 		};
 		C15A4B721D766CCF00FE0D44 = {
@@ -172,6 +190,7 @@
 		C15A4B981D766F8000FE0D44 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				C14541551D7D807B00413C74 /* WeiXinSDK */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -180,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				C15A4B9D1D76749100FE0D44 /* Info.plist */,
+				C145415B1D7D80C600413C74 /* vfans-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -460,14 +480,22 @@
 			baseConfigurationReference = B3619B6A0F8B63B17BD1DC26 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/vfans/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vfans/Libs",
+					"$(PROJECT_DIR)/vfans/Libs/WeiXinSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vfans;
 				PRODUCT_NAME = vfans;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "vfans/Supporting Files/vfans-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -477,14 +505,21 @@
 			baseConfigurationReference = 51C0E793CF0EC9276F4B8AC5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/vfans/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vfans/Libs",
+					"$(PROJECT_DIR)/vfans/Libs/WeiXinSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vfans;
 				PRODUCT_NAME = vfans;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "vfans/Supporting Files/vfans-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
