@@ -84,6 +84,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods/Alamofire.framework"
   install_framework "Pods/DLPanableWebView.framework"
   install_framework "Pods/FDFullscreenPopGesture.framework"
   install_framework "Pods/JLToast.framework"
@@ -94,6 +95,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/WebViewJavascriptBridge.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods/Alamofire.framework"
   install_framework "Pods/DLPanableWebView.framework"
   install_framework "Pods/FDFullscreenPopGesture.framework"
   install_framework "Pods/JLToast.framework"
