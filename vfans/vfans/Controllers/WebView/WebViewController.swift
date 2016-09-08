@@ -28,6 +28,14 @@ class WebViewController: BaseController {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(WebViewController.wxPaySuccess(_:)), name: WXPaySuccessNotification, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: WXPaySuccessNotification, object: nil)
+    }
+    
     //MARK:----------------------------- Init Methods -------------------------------
     init(url: String) {
         self.url = url
@@ -60,6 +68,7 @@ class WebViewController: BaseController {
         jsBridge?.setWebViewDelegate(self)
         jsBridge?.registerHandler("AppNativeHandler") { [weak self] (data, responseCallback) in
             let json = JSON(data)
+            print(json)
             let action = json["action"].stringValue
             let data = json["data"]
             switch action {
@@ -93,6 +102,13 @@ class WebViewController: BaseController {
                             hud.hideAnimated(true)
                         })
                     })
+                }
+                
+            case "wxPrePay":
+                let result = WXPayService.wxTruePay(data)
+                if (result != ErrorDescri.DEFAULT && result != ErrorDescri.TRUEPAY) {
+                    let alert = UIAlertView(title: nil, message: result.rawValue, delegate: nil, cancelButtonTitle: "好的")
+                    alert.show()
                 }
                 
             default:
@@ -139,6 +155,10 @@ class WebViewController: BaseController {
     func howToUse() {
         let loadPageController = WebViewController(url: Hybrid.baseUrl + Hybrid.howToUse)
         self.navigationController?.pushViewController(loadPageController, animated: true)
+    }
+    
+    func wxPaySuccess(notification: NSNotification) {
+        print("支付成功")
     }
     
     //MARK: --------------------------- Getter and Setter --------------------------

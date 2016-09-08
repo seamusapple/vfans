@@ -35,6 +35,9 @@
 		C18E41911D7FD6E300AB7C3E /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E41901D7FD6E300AB7C3E /* AppContext.swift */; };
 		C18E41951D7FF3A800AB7C3E /* APIBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E41941D7FF3A800AB7C3E /* APIBaseManager.swift */; };
 		C18E41981D803C2F00AB7C3E /* UploadGenertor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E41971D803C2F00AB7C3E /* UploadGenertor.swift */; };
+		C18E419B1D80F5A300AB7C3E /* WXPrePayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E419A1D80F5A300AB7C3E /* WXPrePayModel.swift */; };
+		C18E419D1D80F67200AB7C3E /* WXOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E419C1D80F67200AB7C3E /* WXOrderModel.swift */; };
+		C18E41A01D80FB4F00AB7C3E /* WXPayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E419F1D80FB4F00AB7C3E /* WXPayService.swift */; };
 		C196CFD41D79978600016F99 /* SizeConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C196CFD31D79978600016F99 /* SizeConst.swift */; };
 		C1F3B6E31D771A1400D4DDDE /* FontConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F3B6E21D771A1400D4DDDE /* FontConst.swift */; };
 		C1F3B6E61D771BDF00D4DDDE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F3B6E51D771BDF00D4DDDE /* WebViewController.swift */; };
@@ -77,6 +80,9 @@
 		C18E41901D7FD6E300AB7C3E /* AppContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		C18E41941D7FF3A800AB7C3E /* APIBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIBaseManager.swift; sourceTree = "<group>"; };
 		C18E41971D803C2F00AB7C3E /* UploadGenertor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadGenertor.swift; sourceTree = "<group>"; };
+		C18E419A1D80F5A300AB7C3E /* WXPrePayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXPrePayModel.swift; sourceTree = "<group>"; };
+		C18E419C1D80F67200AB7C3E /* WXOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXOrderModel.swift; sourceTree = "<group>"; };
+		C18E419F1D80FB4F00AB7C3E /* WXPayService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXPayService.swift; sourceTree = "<group>"; };
 		C196CFD31D79978600016F99 /* SizeConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeConst.swift; sourceTree = "<group>"; };
 		C1F3B6E21D771A1400D4DDDE /* FontConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontConst.swift; sourceTree = "<group>"; };
 		C1F3B6E51D771BDF00D4DDDE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 		C15A4B941D766F3400FE0D44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C18E41991D80F57900AB7C3E /* WXPayModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,6 +212,7 @@
 		C15A4B951D766F4500FE0D44 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C18E419E1D80FB2600AB7C3E /* WXPayService */,
 			);
 			name = Helpers;
 			path = Heplers;
@@ -380,6 +388,23 @@
 			path = UploadGenerator;
 			sourceTree = "<group>";
 		};
+		C18E41991D80F57900AB7C3E /* WXPayModel */ = {
+			isa = PBXGroup;
+			children = (
+				C18E419A1D80F5A300AB7C3E /* WXPrePayModel.swift */,
+				C18E419C1D80F67200AB7C3E /* WXOrderModel.swift */,
+			);
+			path = WXPayModel;
+			sourceTree = "<group>";
+		};
+		C18E419E1D80FB2600AB7C3E /* WXPayService */ = {
+			isa = PBXGroup;
+			children = (
+				C18E419F1D80FB4F00AB7C3E /* WXPayService.swift */,
+			);
+			path = WXPayService;
+			sourceTree = "<group>";
+		};
 		C1F3B6E41D771B9500D4DDDE /* WebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C18E418F1D7FD28200AB7C3E /* vfansService.swift in Sources */,
+				C18E419D1D80F67200AB7C3E /* WXOrderModel.swift in Sources */,
 				C18E41911D7FD6E300AB7C3E /* AppContext.swift in Sources */,
 				C1F3B6E31D771A1400D4DDDE /* FontConst.swift in Sources */,
 				C18E41891D7FC3BC00AB7C3E /* RequestGenerator.swift in Sources */,
@@ -524,6 +550,7 @@
 				C18E41851D7FAFEE00AB7C3E /* NetworkingConfiguration.swift in Sources */,
 				C15A4BAA1D76CDF600FE0D44 /* RootController.swift in Sources */,
 				C196CFD41D79978600016F99 /* SizeConst.swift in Sources */,
+				C18E41A01D80FB4F00AB7C3E /* WXPayService.swift in Sources */,
 				C15A4BA11D76B4B300FE0D44 /* LaunchController.swift in Sources */,
 				C18E41831D7FAF5E00AB7C3E /* URLResponse.swift in Sources */,
 				C15A4BA31D76B69F00FE0D44 /* IconConst.swift in Sources */,
@@ -532,6 +559,7 @@
 				C18E418B1D7FC56000AB7C3E /* ServiceFactory.swift in Sources */,
 				C15A4BA71D76C81400FE0D44 /* HybridConst.swift in Sources */,
 				C15A4BAE1D76CE6900FE0D44 /* ColorConst.swift in Sources */,
+				C18E419B1D80F5A300AB7C3E /* WXPrePayModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,10 +9,10 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     var window: UIWindow?
-
+    let WX_APPID = "wx7f8453b748d128d8"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let launchController = LaunchController()
@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         // 微信支付
-        let WX_APPID = "wx7f8453b748d128d8"
         WXApi.registerApp(WX_APPID, withDescription: "vfans")
         
         return true
@@ -48,7 +47,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        print("openURL:\(url.absoluteString)")
+        
+        if url.scheme == WX_APPID {
+            return WXApi.handleOpenURL(url, delegate: self)
+        }
+        return true
+    }
 
+    func onResp(resp: BaseResp!) {
+        let strTitle = "支付结果"
+        var strMsg = "\(resp.errCode)"
+        if resp.isKindOfClass(PayResp) {
+            switch resp.errCode {
+            case 0 :
+                NSNotificationCenter.defaultCenter().postNotificationName(WXPaySuccessNotification, object: nil)
+                
+            default:
+                strMsg = "支付失败，请您重新支付!"
+                print("retcode = \(resp.errCode), retstr = \(resp.errStr)")
+            }
+        }
+        let alert = UIAlertView(title: strTitle, message: strMsg, delegate: nil, cancelButtonTitle: "好的")
+        alert.show()
+    }
 
 }
 
