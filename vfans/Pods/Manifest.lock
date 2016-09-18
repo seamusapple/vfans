@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.4.2)
+  - Alamofire (3.5.0)
   - DLPanableWebView (0.9.1)
   - FDFullscreenPopGesture (1.1)
   - JLToast (1.4.2)
@@ -10,7 +10,7 @@ PODS:
   - WebViewJavascriptBridge (5.0.5)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 3.5.0)
   - DLPanableWebView
   - FDFullscreenPopGesture (~> 1.1)
   - JLToast (~> 1.4)
@@ -21,10 +21,10 @@ DEPENDENCIES:
   - WebViewJavascriptBridge (~> 5.0.5)
 
 SPEC CHECKSUMS:
-  Alamofire: 6aa33201d20d069e1598891cf928883ff1888c7a
+  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
   DLPanableWebView: 955fad0362f065729cd597e898ca5cb60c8e40cb
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
-  JLToast: bf63282a7df069557e80c77dbd2c6b9f9fc4de72
+  JLToast: eaeb7c602a60da4525919e6664f874d3cf3247b2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
   SwiftAddressBook: 88c68c6bd0c6a9cb10e5cdc80f91fd87b5e0f4ec
