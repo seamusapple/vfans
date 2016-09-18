@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     var window: UIWindow?
-    let WX_APPID = "wx7f8453b748d128d8"
+    let WX_APPID = "wx4aecdc07bd5a7514"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let launchController = LaunchController()

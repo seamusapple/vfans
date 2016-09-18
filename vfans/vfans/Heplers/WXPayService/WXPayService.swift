@@ -19,9 +19,9 @@ enum ErrorDescri: String {
 }
 
 let WXPaySuccessNotification = "WeixinPaySuccessNotification"
-let partnerId = "1337011001"
+let partnerId = "1390233302"
 
-struct WXPayService {
+struct WXPayService{
     
     //MARK: --------------------------- Public Methods ------------------------
     static func wxTruePay(prePayData: JSON) -> ErrorDescri {
@@ -32,8 +32,8 @@ struct WXPayService {
                                                   noncestr: prePayData["payData"]["nonceStr"].stringValue,
                                                   package: prePayData["payData"]["package"].stringValue,
                                                   partnerID: partnerId,
-                                                  prepayID: prePayData["payData"]["prepayID"].stringValue,
-                                                  sign: prePayData["payData"]["paySign"].stringValue,
+                                                  prepayID: prePayData["payData"]["prepayId"].stringValue,
+                                                  sign: prePayData["payData"]["sign"].stringValue,
                                                   timestamp: prePayData["payData"]["timeStamp"].intValue)
                 let req = PayReq()
                 req.openID = wxPrePayModel.appID

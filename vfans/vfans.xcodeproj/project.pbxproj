@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A39D716DB0E35ABD5F05F43 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67C2861F64A556F1932219BE /* Pods.framework */; };
-		C145415A1D7D80A800413C74 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C14541561D7D80A800413C74 /* libWeChatSDK.a */; };
 		C15A4B7F1D766CCF00FE0D44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15A4B7E1D766CCF00FE0D44 /* AppDelegate.swift */; };
 		C15A4B891D766CCF00FE0D44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C15A4B871D766CCF00FE0D44 /* LaunchScreen.storyboard */; };
 		C15A4BA11D76B4B300FE0D44 /* LaunchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15A4BA01D76B4B300FE0D44 /* LaunchController.swift */; };
@@ -39,6 +38,7 @@
 		C18E419D1D80F67200AB7C3E /* WXOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E419C1D80F67200AB7C3E /* WXOrderModel.swift */; };
 		C18E41A01D80FB4F00AB7C3E /* WXPayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18E419F1D80FB4F00AB7C3E /* WXPayService.swift */; };
 		C196CFD41D79978600016F99 /* SizeConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C196CFD31D79978600016F99 /* SizeConst.swift */; };
+		C1F37BC91D8EA833006797AB /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1F37BC51D8EA833006797AB /* libWeChatSDK.a */; };
 		C1F3B6E31D771A1400D4DDDE /* FontConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F3B6E21D771A1400D4DDDE /* FontConst.swift */; };
 		C1F3B6E61D771BDF00D4DDDE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F3B6E51D771BDF00D4DDDE /* WebViewController.swift */; };
 /* End PBXBuildFile section */
@@ -47,10 +47,6 @@
 		51C0E793CF0EC9276F4B8AC5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		67C2861F64A556F1932219BE /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3619B6A0F8B63B17BD1DC26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		C14541561D7D80A800413C74 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
-		C14541571D7D80A800413C74 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		C14541581D7D80A800413C74 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		C14541591D7D80A800413C74 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		C145415B1D7D80C600413C74 /* vfans-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "vfans-Bridging-Header.h"; sourceTree = "<group>"; };
 		C15A4B7B1D766CCF00FE0D44 /* vfans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vfans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C15A4B7E1D766CCF00FE0D44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +80,10 @@
 		C18E419C1D80F67200AB7C3E /* WXOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXOrderModel.swift; sourceTree = "<group>"; };
 		C18E419F1D80FB4F00AB7C3E /* WXPayService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXPayService.swift; sourceTree = "<group>"; };
 		C196CFD31D79978600016F99 /* SizeConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeConst.swift; sourceTree = "<group>"; };
+		C1F37BC51D8EA833006797AB /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		C1F37BC61D8EA833006797AB /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		C1F37BC71D8EA833006797AB /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		C1F37BC81D8EA833006797AB /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		C1F3B6E21D771A1400D4DDDE /* FontConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontConst.swift; sourceTree = "<group>"; };
 		C1F3B6E51D771BDF00D4DDDE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,12 +93,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1F37BC91D8EA833006797AB /* libWeChatSDK.a in Frameworks */,
 				C18E41721D7FABA900AB7C3E /* libstdc++.tbd in Frameworks */,
 				C18E41701D7FAB9700AB7C3E /* libz.1.2.5.tbd in Frameworks */,
 				C18E416E1D7FAB8800AB7C3E /* libsqlite3.tbd in Frameworks */,
 				C18E416C1D7FAB6700AB7C3E /* CoreTelephony.framework in Frameworks */,
 				C18E416A1D7FAB5900AB7C3E /* SystemConfiguration.framework in Frameworks */,
-				C145415A1D7D80A800413C74 /* libWeChatSDK.a in Frameworks */,
 				0A39D716DB0E35ABD5F05F43 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,10 +131,10 @@
 		C14541551D7D807B00413C74 /* WeiXinSDK */ = {
 			isa = PBXGroup;
 			children = (
-				C14541561D7D80A800413C74 /* libWeChatSDK.a */,
-				C14541571D7D80A800413C74 /* WechatAuthSDK.h */,
-				C14541581D7D80A800413C74 /* WXApi.h */,
-				C14541591D7D80A800413C74 /* WXApiObject.h */,
+				C1F37BC51D8EA833006797AB /* libWeChatSDK.a */,
+				C1F37BC61D8EA833006797AB /* WechatAuthSDK.h */,
+				C1F37BC71D8EA833006797AB /* WXApi.h */,
+				C1F37BC81D8EA833006797AB /* WXApiObject.h */,
 			);
 			path = WeiXinSDK;
 			sourceTree = "<group>";
@@ -449,6 +449,11 @@
 					C15A4B7A1D766CCF00FE0D44 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = Z8A4J4ZKNF;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
