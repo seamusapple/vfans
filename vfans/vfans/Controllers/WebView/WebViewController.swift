@@ -30,10 +30,12 @@ class WebViewController: BaseController {
     
     override func viewWillAppear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(WebViewController.wxPaySuccess(_:)), name: WXPaySuccessNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(WebViewController.wxPayFail(_:)), name: WXPayFailNotification, object: nil)
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: WXPaySuccessNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: WXPayFailNotification, object: nil)
     }
     
     //MARK:----------------------------- Init Methods -------------------------------
@@ -159,6 +161,14 @@ class WebViewController: BaseController {
     
     func wxPaySuccess(notification: NSNotification) {
         print("支付成功")
+        let responseData = ["pay_status": "success"]
+        jsBridge?.callHandler("wxPayStatus", data: responseData)
+    }
+    
+    func wxPayFail(notification: NSNotification) {
+        print("支付失败")
+        let responseData = ["pay_status": "error"]
+        jsBridge?.callHandler("wxPayStatus", data: responseData)
     }
     
     //MARK: --------------------------- Getter and Setter --------------------------

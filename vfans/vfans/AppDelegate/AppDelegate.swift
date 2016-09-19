@@ -68,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                 NSNotificationCenter.defaultCenter().postNotificationName(WXPaySuccessNotification, object: nil)
 //                strMsg = "支付成功!"
             default:
+                NSNotificationCenter.defaultCenter().postNotificationName(WXPayFailNotification, object: nil)
                 strMsg = "支付失败，请您重新支付!"
                 print("retcode = \(resp.errCode), retstr = \(resp.errStr)")
                 let alert = UIAlertView(title: strTitle, message: strMsg, delegate: nil, cancelButtonTitle: "好的")

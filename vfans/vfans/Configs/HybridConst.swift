@@ -15,7 +15,7 @@ import Foundation
  */
 
 struct Hybrid {
-    static let baseUrl = "http://zmcnxd.xicp.net/qfdr/weixin/"
+    static let baseUrl = "http://qfdr.ios.chunjiws.com/weixin/"
     static let home = "index"
-    static let howToUse = "use_shenqi"
+    static let howToUse = "/article_detail?id=8"
 }

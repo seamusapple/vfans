@@ -19,6 +19,7 @@ enum ErrorDescri: String {
 }
 
 let WXPaySuccessNotification = "WeixinPaySuccessNotification"
+let WXPayFailNotification = "WeixinPayFailNotification"
 let partnerId = "1390233302"
 
 struct WXPayService{
