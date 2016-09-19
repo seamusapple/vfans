@@ -28,13 +28,13 @@ struct WXPayService{
         var returnDescri: ErrorDescri?
         if WXApi.isWXAppInstalled() {   // 判断是否安装了微信
             if prePayData["result"].stringValue == "Success" {
-                let wxPrePayModel = WXPrePayModel(appID: prePayData["payData"]["appId"].stringValue,
-                                                  noncestr: prePayData["payData"]["nonceStr"].stringValue,
+                let wxPrePayModel = WXPrePayModel(appID: prePayData["payData"]["appid"].stringValue,
+                                                  noncestr: prePayData["payData"]["noncestr"].stringValue,
                                                   package: prePayData["payData"]["package"].stringValue,
-                                                  partnerID: partnerId,
-                                                  prepayID: prePayData["payData"]["prepayId"].stringValue,
+                                                  partnerID: prePayData["payData"]["partnerid"].stringValue,
+                                                  prepayID: prePayData["payData"]["prepayid"].stringValue,
                                                   sign: prePayData["payData"]["sign"].stringValue,
-                                                  timestamp: prePayData["payData"]["timeStamp"].intValue)
+                                                  timestamp: prePayData["payData"]["timestamp"].intValue)
                 let req = PayReq()
                 req.openID = wxPrePayModel.appID
                 req.partnerId = wxPrePayModel.partnerID
@@ -45,6 +45,7 @@ struct WXPayService{
                 req.sign = wxPrePayModel.sign
                 WXApi.sendReq(req)
                 returnDescri = ErrorDescri.TRUEPAY
+                print("appid=\(req.openID)\npartid=\(req.partnerId)\nprepayid=\(req.prepayId)\nnoncestr=\(req.nonceStr)\ntimestamp=\(req.timeStamp)\npackage=\(req.package)\nsign=\(req.sign)")
             } else if prePayData["result"].stringValue == "Fail" {
                 let errorCode = prePayData["payData"].stringValue
                 switch errorCode {

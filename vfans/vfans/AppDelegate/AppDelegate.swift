@@ -60,18 +60,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     func onResp(resp: BaseResp!) {
         let strTitle = "支付结果"
         var strMsg = "\(resp.errCode)"
+        print("resp: \(resp)")
+        print("respError: \(resp.errCode)")
         if resp.isKindOfClass(PayResp) {
             switch resp.errCode {
             case 0 :
                 NSNotificationCenter.defaultCenter().postNotificationName(WXPaySuccessNotification, object: nil)
-                
+//                strMsg = "支付成功!"
             default:
                 strMsg = "支付失败，请您重新支付!"
                 print("retcode = \(resp.errCode), retstr = \(resp.errStr)")
+                let alert = UIAlertView(title: strTitle, message: strMsg, delegate: nil, cancelButtonTitle: "好的")
+                alert.show()
             }
         }
-        let alert = UIAlertView(title: strTitle, message: strMsg, delegate: nil, cancelButtonTitle: "好的")
-        alert.show()
     }
 
 }
