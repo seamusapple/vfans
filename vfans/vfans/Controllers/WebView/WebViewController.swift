@@ -113,6 +113,47 @@ class WebViewController: BaseController {
                     alert.show()
                 }
                 
+            case "addFriends":
+                guard let personData = data["phoneList"].array else {
+                    let toast = JLToast.makeText("信息不全", delay: 0, duration: 1.0)
+                    toast.show()
+                    return
+                }
+                
+                let cancleAction = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+                let addTeleAction = UIAlertAction(title: "添加到通讯录", style: .Default, handler: { (UIAlertAction) in
+                    let hud = MBProgressHUD.showHUDAddedTo(self!.view, animated: true)
+                    hud.mode = .AnnularDeterminate
+                    hud.label.text = "正在保存..."
+                    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), {
+                        self?.saveToAddressBook(personData)
+                        dispatch_async(dispatch_get_main_queue(), {
+                            hud.hideAnimated(true)
+                        })
+                    })
+                })
+                
+                let callTeleAction = UIAlertAction(title: "拨打联系电话", style: .Default, handler: { (UIAlertAction) in
+                    let telePhone = personData[0]["phoneNum"].stringValue
+                    UIApplication.sharedApplication().openURL(NSURL(string :"tel://"+"\(telePhone)")!)
+                })
+                
+                let saveErWeiMaAction = UIAlertAction(title: "保存二维码到相册", style: .Default, handler: { (UIAlertAction) in
+                    let urlToSave = personData[0]["erweima"].stringValue
+                    guard urlToSave.characters.count == 0 else {
+                        let toast = JLToast.makeText("无二维码信息", delay: 0, duration: 1.0)
+                        toast.show()
+                        return
+                    }
+                    self!.saveErWeiMa(urlToSave)
+                })
+                
+                self!.addFriendsAlertController.addAction(cancleAction)
+                self!.addFriendsAlertController.addAction(addTeleAction)
+                self!.addFriendsAlertController.addAction(callTeleAction)
+                self!.addFriendsAlertController.addAction(saveErWeiMaAction)
+                self?.presentViewController(self!.addFriendsAlertController, animated: true, completion: nil)
+                
             default:
                 print("无此接口")
             }
@@ -171,6 +212,30 @@ class WebViewController: BaseController {
         jsBridge?.callHandler("wxPayStatus", data: responseData)
     }
     
+    func saveErWeiMa(url: String) {
+        if let imageUrl = NSURL(string: url) {
+            if let data = NSData(contentsOfURL: imageUrl) {
+                if (UIImage(data: data) != nil) {
+                    let image = UIImage(data: data)
+                    UIImageWriteToSavedPhotosAlbum(image!, self, #selector(WebViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                    return
+                }
+            }
+        }
+    }
+    
+    func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject) {
+        if didFinishSavingWithError != nil {
+            let toast = JLToast.makeText("保存二维码失败", delay: 0, duration: 1.0)
+            toast.show()
+            
+            return
+        }
+        
+        let toast = JLToast.makeText("保存二维码成功", delay: 0, duration: 1.0)
+        toast.show()
+    }
+    
     //MARK: --------------------------- Getter and Setter --------------------------
     private lazy var webView: UIWebView = {
         let webView = UIWebView()
@@ -184,6 +249,11 @@ class WebViewController: BaseController {
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.mode = .Indeterminate
         return hud
+    }()
+    
+    private lazy var addFriendsAlertController: UIAlertController = {
+        let alertController = UIAlertController(title: nil, message: "请选择你要操作的项", preferredStyle: .ActionSheet)
+        return alertController
     }()
     
     private var jsBridge: WebViewJavascriptBridge?
