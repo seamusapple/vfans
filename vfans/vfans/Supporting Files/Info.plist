@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>此APP需要您的相机权限用以拍摄照片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>此APP需要您的相册权限用以保存二维码</string>
+	<key>NSContactsUsageDescription</key>
+	<string>此APP需要您的通讯录权限用以保存手机号码</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
