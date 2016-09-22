@@ -14,7 +14,7 @@ enum ErrorDescri: String {
     case ORDERPAID = "商户订单已支付"
     case ORDERCLOSED = "订单已关闭"
     case TRUEPAY = "已发起真正支付"
-    case NOTINSTALLED = "未安装微信"
+    case NOTINSTALLED = "未安装微信，请安装微信完成支付"
     case DEFAULT
 }
 

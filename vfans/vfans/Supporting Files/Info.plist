@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>此APP需要您的相机权限用以拍摄照片</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>此APP需要您的相册权限用以保存二维码</string>
-	<key>NSContactsUsageDescription</key>
-	<string>此APP需要您的通讯录权限用以保存手机号码</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -38,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>1.0.1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>weixin</string>
@@ -50,6 +44,18 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>是否允许APP访问您的相机用以拍摄照片</string>
+	<key>NSContactsUsageDescription</key>
+	<string>是否允许APP访问您的通讯录权限用以保存手机号码</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>是否允许后台访问您的地理位置用以定位</string>
+	<key>NSLocationUsageDescription</key>
+	<string>是否允许APP访问您的地理位置用以定位</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>是否允许APP访问您的地理位置用以定位</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>是否允许APP访问您的相册权限用以保存二维码</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
